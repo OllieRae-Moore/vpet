@@ -21,7 +21,6 @@
 # You should test each method in your code before submission.
 # Check that attributes are modified as expected
 # For example:
-
 ''' Tests
 Pet = VirtualPet("Timmy",4,3)
 print(Pet)
@@ -32,3 +31,38 @@ print(Pet)
 Pet.sleep()
 print(Pet)
 '''
+class VirtualPet:
+    def __init__(self,name,energy=10,hunger=0):
+        self.name=name
+        self.energy=energy
+        self.hunger=hunger
+    def play(self):
+        if self.energy<2:
+            print(f"{self.name} is too tired to play!")
+        else:
+            self.energy-=2
+            self.hunger+=2
+    def feed(self):
+        self.hunger-=3
+        if self.hunger<0:
+            self.hunger = 0
+            print(f"{self.name} is overfed!")
+    def sleep(self):
+        self.energy+=10
+    def __str__(self):
+        return f"{self.name} has {self.energy} energy points and hunger level {self.hunger}"
+    def __eq__(self, other):
+        if self.name == other.name and self.energy == other.energy and self.hunger == other.hunger:
+            return True
+        else:
+            return False
+
+Pet = VirtualPet("Timmy",4,3)
+print(Pet)
+Pet.play()
+print(Pet)
+Pet.feed()
+print(Pet)
+Pet.sleep()
+OtherPet = VirtualPet("Timmy,4,3")
+print(Pet == OtherPet)
