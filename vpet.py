@@ -32,11 +32,12 @@ Pet.sleep()
 print(Pet)
 '''
 class VirtualPet:
-    '''this class represents a virtual pet with the attributes: name
-                                                                hunger
-                                                                energy
+    '''this class represents a virtual pet with the attributes: name (str)
+                                                                hunger (int)
+                                                                energy (int)
     '''
     def __init__(self,name,energy=10,hunger=0):
+        '''this initialises the virtual pet object and has the parameters of name, energy and hunger '''
         self.name=name
         self.energy=energy
         self.hunger=hunger
@@ -54,6 +55,8 @@ class VirtualPet:
 
 
     def feed(self):
+        ''' this will decrease the huunger by 3 unless hunger is negative in which case it will set it to
+        zero and return a message saying that the pet is overfed'''
         self.hunger-=3
         if self.hunger<0:
             self.hunger = 0
@@ -61,14 +64,18 @@ class VirtualPet:
 
 
     def sleep(self):
+        '''this will simulate the pet sleeping and thus increase engergy by ten'''
         self.energy+=10
 
 
     def __str__(self):
+        '''this returns a string including details of the pet such as 
+        its name, energy and hunger.'''
         return f"{self.name} has {self.energy} energy points and hunger level {self.hunger}"
-
+        
 
     def __eq__(self, other):
+        '''this returns true if two pet objects are identical; it compares  their name, hunger  and energy.'''
         if self.name == other.name and self.energy == other.energy and self.hunger == other.hunger:
             return True
         else:
